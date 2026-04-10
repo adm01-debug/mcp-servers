@@ -1,44 +1,48 @@
 # MCP Servers Collection
 
-Coleção de MCP Servers customizados para Claude.ai, desenvolvidos pela Promo Brindes.
+Coleção de servidores MCP (Model Context Protocol) para integração com Claude.ai.
 
-## 🚀 GitHub MCP Server v3.0
+## 📦 Servidores Disponíveis
 
-**URL:** `https://github-mcp-server.adm01.workers.dev/mcp`  
-**Status:** ✅ Online | **Tools:** 108 | **Paridade:** 100%+
+| MCP | Ferramentas | URL | Descrição |
+|-----|-------------|-----|-----------|
+| **GitHub MCP** | 108 | `https://github-mcp-server.adm01.workers.dev/mcp` | Gerenciamento completo de repositórios GitHub |
+| **Cloudflare Deploy MCP** | 16 | `https://cloudflare-deploy-mcp.adm01.workers.dev/mcp` | Deploy e gerenciamento de infraestrutura Cloudflare |
+| **Playwright MCP** | 23 | `https://playwright-mcp.adm01.workers.dev/mcp` | Automação de browser via Cloudflare Browser Rendering |
 
-### Funcionalidades
+## 🚀 Quick Start
 
-| Categoria | Ferramentas | Status |
-|-----------|-------------|--------|
-| Repos | CRUD, fork, branches, tags | ✅ |
-| Issues | CRUD, comments, labels, assignees | ✅ |
-| Pull Requests | CRUD, merge, reviews, files | ✅ |
-| Search | code, repos, issues, users, orgs | ✅ |
-| Actions | workflows, runs, jobs, trigger, cancel | ✅ |
-| Gists | CRUD completo | ✅ |
-| Releases | CRUD, tags, assets | ✅ |
-| Notifications | list, dismiss, mark read, subscriptions | ✅ 🆕 |
-| Stars | star/unstar, list starred | ✅ 🆕 |
-| Organizations | search, teams, members | ✅ 🆕 |
-| Code Security | code scanning alerts | ✅ 🆕 |
-| Dependabot | vulnerability alerts | ✅ 🆕 |
-| Secret Scanning | secret alerts + locations | ✅ 🆕 |
-| Security Advisories | global + repo | ✅ 🆕 |
-| Labels | CRUD completo | ✅ 🆕 |
-| Discussions | via GraphQL | ✅ 🆕 |
+Para adicionar um MCP no Claude.ai:
+1. Vá em **Settings** → **Integrations** → **MCP Servers**
+2. Adicione a URL do MCP desejado
+3. Autorize a conexão
 
-### Como usar
+## 📁 Estrutura
 
-1. Acesse Claude.ai > Settings > Connected Apps
-2. Adicione um novo MCP Server com a URL acima
-3. Pronto! As 108 ferramentas estarão disponíveis
+```
+mcp-servers/
+├── README.md
+├── github-mcp-server/
+│   ├── worker.js
+│   └── README.md
+├── cloudflare-deploy-mcp/
+│   ├── worker.js
+│   └── README.md
+└── playwright-mcp/
+    ├── worker.js
+    └── README.md
+```
 
-## 📦 Outros MCP Servers
+## 🔧 Tecnologias
 
-- **Rodonaves MCP:** `https://rodonaves-mcp.adm01.workers.dev/mcp`
-- **Total Express MCP:** `https://totalexpress-mcp.adm01.workers.dev/mcp`
+- **Runtime:** Cloudflare Workers
+- **Protocolo:** MCP (Model Context Protocol)
+- **Linguagem:** JavaScript (ES Modules)
 
-## 📝 Licença
+## 📄 Licença
 
-MIT © 2026 Promo Brindes
+MIT
+
+---
+
+*Mantido por adm01-debug*
