@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════════════
+# 🌐 BROWSER RENDERING MCP SERVER v3.0 ENTERPRISE
+# ═══════════════════════════════════════════════════════════════
+# 34 Ferramentas | Production Ready | All Modules Integrated
+# ═══════════════════════════════════════════════════════════════
+
+name = "browser-rendering-mcp"
+main = "worker-v3.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Workers.dev subdomain
+workers_dev = true
+
+# ═══════════════════════════════════════════════════════════════
+# SECRETS (configurar via wrangler secret put)
+# ═══════════════════════════════════════════════════════════════
+# CF_ACCOUNT_ID - Account ID da Cloudflare
+# CF_BROWSER_TOKEN - Token da API Browser Rendering
+# AUTH_TOKEN - (opcional) Bearer token para autenticação MCP
+
+# ═══════════════════════════════════════════════════════════════
+# KV NAMESPACE - CACHE
+# ═══════════════════════════════════════════════════════════════
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id = "35017f5f20bb477095a56a81b4170741"
+
+# ═══════════════════════════════════════════════════════════════
+# R2 BUCKET - STORAGE
+# ═══════════════════════════════════════════════════════════════
+[[r2_buckets]]
+binding = "STORAGE_R2"
+bucket_name = "worker-backups"
+
+# ═══════════════════════════════════════════════════════════════
+# WORKERS AI - OCR e Extração Inteligente
+# ═══════════════════════════════════════════════════════════════
+[ai]
+binding = "AI"
+
+# ═══════════════════════════════════════════════════════════════
+# CRON TRIGGERS - Agendamento
+# ═══════════════════════════════════════════════════════════════
+[triggers]
+crons = ["*/5 * * * *", "0 * * * *", "0 9 * * *"]
+
+# ═══════════════════════════════════════════════════════════════
+# VARIÁVEIS DE AMBIENTE
+# ═══════════════════════════════════════════════════════════════
+[vars]
+R2_PUBLIC_DOMAIN = "worker-backups.r2.dev"
+
+# ═══════════════════════════════════════════════════════════════
+# OBSERVABILITY
+# ═══════════════════════════════════════════════════════════════
+[observability]
+enabled = true
