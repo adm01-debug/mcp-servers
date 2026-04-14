@@ -1,5 +1,14 @@
 # Evolution MCP Server - CHANGELOG
 
+## [3.4.1] - 2026-04-14
+
+### 🐛 Hotfix
+- **isHealthy Fix**: Agora baseado APENAS em `connectionStatus=open`
+- Ignora `disconnectionReasonCode` histórico após reconexão
+- Resolve falsos negativos quando API retornava códigos de desconexão antigos
+
+---
+
 ## [3.4.0] - 2026-04-14
 
 ### 🚀 New Features
@@ -74,23 +83,25 @@
 ### Workers Cloudflare
 | Worker | Versão | Status | URL |
 |--------|--------|--------|-----|
-| evolution-mcp | v3.4.0 | ✅ LIVE | https://evolution-mcp.adm01.workers.dev |
+| evolution-mcp | v3.4.1 | ✅ LIVE | https://evolution-mcp.adm01.workers.dev |
 | portainer-mcp | v1.0.0 | ⚠️ Backend 503 | https://portainer-mcp.adm01.workers.dev |
 
 ### Webhook Configuration
 - **URL**: `https://tdprnylgyrogbbhgdoik.supabase.co/functions/v1/evolution-webhook`
 - **Events**: 28/31 (90.3% cobertura)
-- **Missing**: NEW_JWT_TOKEN, INSTANCE_CREATE, INSTANCE_DELETE (admin events)
+- **Missing**: NEW_JWT_TOKEN, INSTANCE_CREATE, INSTANCE_DELETE (admin events - irrelevantes para operação)
 
 ### Evolution API
 - **Host**: https://evolution.atomicabr.com.br
 - **Instance**: wpp2
 - **Version**: v2.3.7
 - **Connection**: OPEN ✅
+- **Number**: 551146375517
+- **Profile**: Promo Brindes
 
 ---
 
-## Session Summary - 10/10 Improvements
+## Session Summary - 10/10 Improvements ✅
 
 | # | Improvement | Status |
 |---|-------------|--------|
@@ -100,8 +111,8 @@
 | 4 | Bitrix24 notification | ✅ |
 | 5 | CHANGELOG GitHub commit | ✅ |
 | 6 | Portainer MCP Worker created | ✅ |
-| 7 | Rate Limiting v3.4.0 | ✅ |
-| 8 | Webhook expansion (90.3%) | ✅ |
+| 7 | Rate Limiting v3.4.0/v3.4.1 | ✅ |
+| 8 | Webhook analysis (90.3%) | ✅ |
 | 9 | Dashboard React component | ✅ |
 | 10 | Final documentation | ✅ |
 
@@ -163,5 +174,6 @@
 
 ---
 
-*Promo Brindes - Evolution MCP Server*
+*Promo Brindes - Evolution MCP Server v3.4.1*
 *Powered by Cloudflare Workers*
+*Session completed: 14/04/2026 - 10/10 improvements*
