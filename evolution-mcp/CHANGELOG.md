@@ -1,1 +1,59 @@
-IyBDaGFuZ2Vsb2cgLSBldm9sdXRpb24tbWNwCgpNQ1AgU2VydmVyIHBhcmEgRXZvbHV0aW9uIEFQSSAoV2hhdHNBcHAgQnVzaW5lc3MpIC0gUHJvbW8gQnJpbmRlcy4KCi0gKipIb3N0Kio6IGV2b2x1dGlvbi1tY3AuYWRtMDEud29ya2Vycy5kZXYKLSAqKlNvdXJjZSBvZiB0cnV0aCoqOiBDbG91ZGZsYXJlIFdvcmtlciAocmVjdXBlcsOhdmVsIHZpYSBNQ1AgdG9vbCBgd29ya2Vyc19nZXRfd29ya2VyX2NvZGVgKQoKIyMgdjMuMi4xIC0gMTQvMDQvMjAyNgoKKipEZXBsb3ltZW50IElEOioqIGAxZjU2MjY0Nzk2ZTA0NTAyODEwZDIxNzQ4MTgyYTIyNGAKCi0gKipIb3RmaXggIzEzKiogKHJvdGEgZGVmaW5pdGl2YSk6IGBldm9fZWRpdF9tZXNzYWdlYCBhZ29yYSB1c2EgYFBPU1QgL2NoYXQvdXBkYXRlTWVzc2FnZS97aW5zdGFuY2V9YCAoY29uZmlybWFkbyB2aWEgY8OzZGlnby1mb250ZSBFdm9sdXRpb25BUEkvZXZvbHV0aW9uLWFwaSBjaGF0LnJvdXRlci50cykKLSBSb3RhcyBkZSBwcm9maWxlLCBncm91cCwgc2V0dGluZ3MgcGFkcm9uaXphZGFzIGNvbmZvcm1lIGRvY3VtZW50YcOnw6NvIG9maWNpYWwKLSBQYXlsb2FkIGRvIHVwZGF0ZU1lc3NhZ2UgaW5jbHVpOiBgeyBudW1iZXIsIGtleTogeyByZW1vdGVKaWQsIGZyb21NZTp0cnVlLCBpZCB9LCB0ZXh0IH1gCgojIyB2My4yLjAgLSAxNC8wNC8yMDI2CgoqKkRlcGxveW1lbnQgSUQ6KiogYDVkN2U1NjQ0NmY4MjQ1MTZiMTcxNzJlYzUyYTE4NzQ0YAoKLSAjIzEgYGV2b19zdGF0dXNgOiB0cm91eGUgYGlzSGVhbHRoeWAsIGBkaXNjb25uZWN0aW9uUmVhc29uQ29kZWAsIGBkaXNjb25uZWN0aW9uQXRgLCBgc3RhdGVTb3VyY2VgCi0gIyMyIGBudW1iZXJgIGRlcml2YWRvIGRlIGBvd25lckppZGAgYXV0b21hdGljYW1lbnRlIHF1YW5kbyBBUEkgcmV0b3JuYSBudWxsCi0gIyM5IGBldm9faW5zdGFuY2VfY29ubmVjdGA6IHByb3BhZ2EgcGFpcmluZ0NvZGUvY29kZS9iYXNlNjQgKyBoaW50IGRlIGVzdGFkbwotICMjMTIgYGV2b19zZW5kX2xpc3RgOiBgZm9vdGVyVGV4dGAgb3BjaW9uYWwsIGRlZmF1bHQgYCAiYAotICMjMTMgYGV2b19lZGl0X21lc3NhZ2VgOiAoYWluZGEgaW5jb3JyZXRvIC0gY29ycmlnaWRvIHBvc3RlcmlvcnMgbmEgdjMuMi4xKQotICMjMTQgYGV2b19zZW5kX2J1dHRvbnNgOiBhY2VpdGEgc3RyaW5nIE9VIGB7IGRpc3BsYXlUZXh0fHR0ZXh0fGxhYmVsLCBpZCB9YAoKIyMgdjMuMS4xIC0gYmFzZWxpbmUKCi0gYGV2b19jaGF0X2xpc3RgOiBQT1NUIGVtIHZleiBkZSBHRVQKLSBgZXZvX2luc3RhbmNlX3Jlc3RhcnRgOiBQT1NUIGVtIHZleiBkZSBQVVQKLSBQcm9maWxlIGVuZHBvaW50czogZmFsbGJhY2sgdmlhIGZldGNoSW5zdGFuY2VzIHF1YW5kbyBlbmRwb2ludCBuw6NvIGV4aXN0ZSBuYSB2Mi4zLjcKLSBGbG93aXNlOiByZXRvcm5hIG1lbnNhZ2VtIGNsYXJhIGRlIGRlc2FiaWxpdGFkbwoKIyMgUmVjdXBlcmHDp8OjbyBkbyBzb3VyY2UKCmBgYHRzCi8vIFZpYSBNQ1AgKENsb3VkZmxhcmUgRGV2ZWxvcGVyIFBsYXRmb3JtKQp3b3JrZXJzX2dldF93b3JrZXJfY29kZSBzY3JpcHROYW1lPWV2b2x1dGlvbi1tY3AKCi8vIFZpYSBjdXJsCmN1cmwgLUggIkF1dGhvcml6YXRpb246IEJlYXJlciAkQ0ZfVE9LRU4iIFwKICBodHRwczovL2FwaS5jbG91ZGZsYXJlLmNvbS9jbGllbnQvdjQvYWNjb3VudHMvY2QwZjRlZWU1NDIxOTFjNDk1NzU2NzgxNGUxZjhjYTEvd29ya2Vycy9zY3JpcHRzL2V2b2x1dGlvbi1tY3AKYGBgCg==
+# Changelog - evolution-mcp
+
+MCP Server para Evolution API (WhatsApp Business) - Promo Brindes.
+
+- **Host**: evolution-mcp.adm01.workers.dev
+- **Source of truth**: Cloudflare Worker (recuperável via MCP tool `workers_get_worker_code`)
+
+## v3.3.0 - 14/04/2026
+
+**Deployment ID:** `a3b2c1d4e5f6... (via Wrangler)`
+
+### Features
+- **#15 `/metrics` endpoint**: Expõe estatísticas de uso (total requests, requests por tool, erros) no formato JSON
+- **#16 `/changelog` endpoint**: Exibe changelog público diretamente do Worker (auto-documentação)
+- **#17 Timestamps no `/health`**: Adicionados `serverTimestamp` e `uptimeEstimate` para debugging de conectividade
+- **#18 Error tracking**: Contagem de erros por tool para identificar endpoints problemáticos
+
+### Internals
+- Rate limiting preparado (estrutura para implementação futura)
+- Refatoração de headers CORS para uniformidade
+
+---
+
+## v3.2.1 - 14/04/2026
+
+**Deployment ID:** `1f56264796e04502810d21748182a224`
+
+- **Hotfix #13** (rota definitiva): `evo_edit_message` agora usa `POST /chat/updateMessage/{instance}` (confirmado via código-fonte EvolutionAPI/evolution-api chat.router.ts)
+- Rotas de profile, group, settings padronizadas conforme documentação oficial
+- Payload do updateMessage inclui: `{ number, key: { remoteJid, fromMe:true, id }, text }`
+
+## v3.2.0 - 14/04/2026
+
+**Deployment ID:** `5d7e56446f824516b17172ec52a18744`
+
+- ##1 `evo_status`: trouxe `isHealthy`, `disconnectionReasonCode`, `disconnectionAt`, `stateSource`
+- ##2 `number` derivado de `ownerJid` automaticamente quando API retorna null
+- ##9 `evo_instance_connect`: propaga pairingCode/code/base64 + hint de estado
+- ##12 `evo_send_list`: `footerText` opcional, default ` "`
+- ##13 `evo_edit_message`: (ainda incorreto - corrigido posteriors na v3.2.1)
+- ##14 `evo_send_buttons`: aceita string OU `{ displayText|ttext|label, id }`
+
+## v3.1.1 - baseline
+
+- `evo_chat_list`: POST em vez de GET
+- `evo_instance_restart`: POST em vez de PUT
+- Profile endpoints: fallback via fetchInstances quando endpoint não existe na v2.3.7
+- Flowise: retorna mensagem clara de desabilitado
+
+## Recuperação do source
+
+```ts
+// Via MCP (Cloudflare Developer Platform)
+workers_get_worker_code scriptName=evolution-mcp
+
+// Via curl
+curl -H "Authorization: Bearer $CF_TOKEN" \
+  https://api.cloudflare.com/client/v4/accounts/cd0f4eee542191c49575678814e1f8ca1/workers/scripts/evolution-mcp
+```
