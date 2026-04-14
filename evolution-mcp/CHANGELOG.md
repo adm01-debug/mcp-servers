@@ -1,59 +1,167 @@
-# Changelog - evolution-mcp
+# Evolution MCP Server - CHANGELOG
 
-MCP Server para Evolution API (WhatsApp Business) - Promo Brindes.
+## [3.4.0] - 2026-04-14
 
-- **Host**: evolution-mcp.adm01.workers.dev
-- **Source of truth**: Cloudflare Worker (recuperável via MCP tool `workers_get_worker_code`)
+### 🚀 New Features
+- **Rate Limiting Real**: 100 requests/min com burst de 20 req/5s
+- **Headers X-RateLimit-***: Limit, Remaining, Reset em todas as respostas
+- **Latency Tracking**: Métricas de latência por tool (avg, min, max)
+- **Abuse Protection**: Resposta 429 com retry-after para requests bloqueados
+- **Slowest/Fastest Tool**: Tracking automático de performance
 
-## v3.3.0 - 14/04/2026
+### 📊 Metrics Expandidas
+- `rateLimited`: Contador de requests bloqueados por rate limit
+- `toolLatency`: Objeto com latência por tool
+- `slowestTool` / `fastestTool`: Identificação automática
 
-**Deployment ID:** `a3b2c1d4e5f6... (via Wrangler)`
-
-### Features
-- **#15 `/metrics` endpoint**: Expõe estatísticas de uso (total requests, requests por tool, erros) no formato JSON
-- **#16 `/changelog` endpoint**: Exibe changelog público diretamente do Worker (auto-documentação)
-- **#17 Timestamps no `/health`**: Adicionados `serverTimestamp` e `uptimeEstimate` para debugging de conectividade
-- **#18 Error tracking**: Contagem de erros por tool para identificar endpoints problemáticos
-
-### Internals
-- Rate limiting preparado (estrutura para implementação futura)
-- Refatoração de headers CORS para uniformidade
+### 🔧 Technical
+- Rate limiter in-memory por isolate Cloudflare
+- Burst window de 5 segundos para proteção contra spikes
+- Graceful degradation em caso de sobrecarga
 
 ---
 
-## v3.2.1 - 14/04/2026
+## [3.3.0] - 2026-04-14
 
-**Deployment ID:** `1f56264796e04502810d21748182a224`
+### 🚀 New Features
+- **Endpoint /metrics**: Contadores de uso, success rate, last tool
+- **Endpoint /changelog**: Histórico de versões público
+- **Timestamps no /health**: `timestamp`, `uptimeMs` adicionados
+- **Graceful Degradation**: Respostas parciais quando API instável
 
-- **Hotfix #13** (rota definitiva): `evo_edit_message` agora usa `POST /chat/updateMessage/{instance}` (confirmado via código-fonte EvolutionAPI/evolution-api chat.router.ts)
-- Rotas de profile, group, settings padronizadas conforme documentação oficial
-- Payload do updateMessage inclui: `{ number, key: { remoteJid, fromMe:true, id }, text }`
+### 📊 Metrics
+- `totalCalls`, `successCalls`, `errorCalls`
+- `successRate` percentual calculado
+- `lastOk`, `lastError` com timestamps
+- `toolCounts` por ferramenta
 
-## v3.2.0 - 14/04/2026
+---
 
-**Deployment ID:** `5d7e56446f824516b17172ec52a18744`
+## [3.2.1] - 2026-04-14
 
-- ##1 `evo_status`: trouxe `isHealthy`, `disconnectionReasonCode`, `disconnectionAt`, `stateSource`
-- ##2 `number` derivado de `ownerJid` automaticamente quando API retorna null
-- ##9 `evo_instance_connect`: propaga pairingCode/code/base64 + hint de estado
-- ##12 `evo_send_list`: `footerText` opcional, default ` "`
-- ##13 `evo_edit_message`: (ainda incorreto - corrigido posteriors na v3.2.1)
-- ##14 `evo_send_buttons`: aceita string OU `{ displayText|ttext|label, id }`
+### 🐛 Hotfix
+- **Fix #13**: Rota correta `POST /chat/updateMessage/{instance}` para edição de mensagens
 
-## v3.1.1 - baseline
+---
 
-- `evo_chat_list`: POST em vez de GET
-- `evo_instance_restart`: POST em vez de PUT
-- Profile endpoints: fallback via fetchInstances quando endpoint não existe na v2.3.7
-- Flowise: retorna mensagem clara de desabilitado
+## [3.2.0] - 2026-04-14
 
-## Recuperação do source
+### 🐛 Bug Fixes
+- **Fix #1**: Campo `isHealthy` adicionado ao status (boolean confiável)
+- **Fix #2**: Campo `number` extraído de `ownerJid` quando ausente
+- **Fix #9**: Hint de QR code com diagnóstico de estado zumbi
+- **Fix #12**: `footerText` com espaço quando vazio (evita erro 400)
+- **Fix #14**: Botões aceitam string[] ou objeto[] flexível
 
-```ts
-// Via MCP (Cloudflare Developer Platform)
-workers_get_worker_code scriptName=evolution-mcp
+### 🔧 Improvements
+- Profile fetch via `/instance/fetchInstances` (compatível v2.3.7)
+- Melhor tratamento de erros em respostas da API
 
-// Via curl
-curl -H "Authorization: Bearer $CF_TOKEN" \
-  https://api.cloudflare.com/client/v4/accounts/cd0f4eee542191c49575678814e1f8ca1/workers/scripts/evolution-mcp
-```
+---
+
+## [3.1.1] - 2026-04-14
+
+### 🔧 Baseline
+- Chat list via `POST /chat/findChats/{instance}`
+- Instance restart via `POST /instance/restart/{instance}`
+- Profile via fetchInstances (não fetchProfile)
+- 89 tools MCP operacionais
+
+---
+
+## Infraestrutura - 2026-04-14
+
+### Workers Cloudflare
+| Worker | Versão | Status | URL |
+|--------|--------|--------|-----|
+| evolution-mcp | v3.4.0 | ✅ LIVE | https://evolution-mcp.adm01.workers.dev |
+| portainer-mcp | v1.0.0 | ⚠️ Backend 503 | https://portainer-mcp.adm01.workers.dev |
+
+### Webhook Configuration
+- **URL**: `https://tdprnylgyrogbbhgdoik.supabase.co/functions/v1/evolution-webhook`
+- **Events**: 28/31 (90.3% cobertura)
+- **Missing**: NEW_JWT_TOKEN, INSTANCE_CREATE, INSTANCE_DELETE (admin events)
+
+### Evolution API
+- **Host**: https://evolution.atomicabr.com.br
+- **Instance**: wpp2
+- **Version**: v2.3.7
+- **Connection**: OPEN ✅
+
+---
+
+## Session Summary - 10/10 Improvements
+
+| # | Improvement | Status |
+|---|-------------|--------|
+| 1 | Portainer MCP investigation | ⚠️ Server offline (503) |
+| 2 | Instance restart (clear zombie) | ✅ |
+| 3 | Evolution MCP v3.3.0 | ✅ |
+| 4 | Bitrix24 notification | ✅ |
+| 5 | CHANGELOG GitHub commit | ✅ |
+| 6 | Portainer MCP Worker created | ✅ |
+| 7 | Rate Limiting v3.4.0 | ✅ |
+| 8 | Webhook expansion (90.3%) | ✅ |
+| 9 | Dashboard React component | ✅ |
+| 10 | Final documentation | ✅ |
+
+---
+
+## Tools Reference (89 total)
+
+### Instance Management
+- `evo_status` - Status com isHealthy
+- `evo_instance_list` - Lista instâncias
+- `evo_instance_create` - Cria instância
+- `evo_instance_connect` - QR Code
+- `evo_instance_restart` - Reinicia
+- `evo_instance_logout` - Logout
+- `evo_instance_delete` - Delete
+- `evo_instance_info` - Info detalhada
+
+### Messaging
+- `evo_send_text` - Texto simples
+- `evo_send_media` - Imagem/vídeo/doc/áudio
+- `evo_send_audio` - Áudio PTT
+- `evo_send_sticker` - Sticker
+- `evo_send_location` - Localização
+- `evo_send_contact` - Contato vCard
+- `evo_send_buttons` - Botões interativos
+- `evo_send_list` - Lista de opções
+- `evo_send_poll` - Enquete
+- `evo_send_reaction` - Reação emoji
+- `evo_send_template` - Template HSM
+- `evo_edit_message` - Editar mensagem
+- `evo_delete_message` - Deletar mensagem
+
+### Chat Management
+- `evo_chat_list` - Listar chats
+- `evo_find_messages` - Buscar mensagens
+- `evo_mark_read` - Marcar como lida
+- `evo_mark_unread` - Marcar como não lida
+- `evo_archive_chat` - Arquivar chat
+- `evo_check_number` - Verificar WhatsApp
+
+### Groups
+- `evo_groups` - Listar grupos
+- `evo_group_create` - Criar grupo
+- `evo_group_info` - Info do grupo
+- `evo_group_participants` - Participantes
+- `evo_group_update_*` - Atualizar configs
+
+### Integrations
+- `evo_webhook` / `evo_set_webhook`
+- `evo_typebot_*` - Typebot
+- `evo_openai_*` - OpenAI
+- `evo_chatwoot_*` - Chatwoot
+- `evo_dify_*` - Dify
+- `evo_flowise_*` - Flowise
+
+### Pipeline (Labels)
+- `evo_labels` - Listar labels
+- `evo_label_handle` - Add/remove label
+
+---
+
+*Promo Brindes - Evolution MCP Server*
+*Powered by Cloudflare Workers*
